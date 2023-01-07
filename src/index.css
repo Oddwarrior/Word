@@ -1,3 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#root {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    padding: 0;
+    margin: 0;
+}
+
+.bg {
+    background: linear-gradient(141deg, rgb(189, 139, 201) 0.00%, rgb(133, 107, 171) 23.93%, rgb(100, 73, 138) 100.00%);
+
+    /* background: rgb(94, 84, 142);
+    background: radial-gradient(circle, rgba(94, 84, 142, 1) 0%, rgba(35, 25, 66, 1) 92%); */
+}
+
+.bold-font {
+    font-family: 'Poppins' sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 80px;
+}
+
+@media (max-width: 640px) {
+    .bold-font {
+        font-size: 50px;
+        line-height: 50px;
+    }
+}
