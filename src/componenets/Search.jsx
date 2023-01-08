@@ -27,7 +27,7 @@ export default function Search() {
 
     console.log();
     return (
-        <div className=' pt-4 lg:p-10 lg:pt-24 lg:flex items-center justify-center lg:gap-20 duration-300'>
+        <div className=' pt-4 lg:p-10 lg:pt-24 lg:flex items-center justify-center xl:gap-20 duration-300'>
             <section className=' lg:p-8'>
 
                 <form onSubmit={handleSubmit} className='flex  flex-col items-center p-4'>
