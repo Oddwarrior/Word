@@ -1,22 +1,23 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Footer from './Footer'
 import Header from './Header'
 import Main from './Main'
 
 export default function Layout() {
     return (
-        <div className=' bg-cover m-0 bg  h-screen w-screen '>
+        <div className='  m-0  h-full sm:h-screen w-full grid grid-rows-[auto_auto_50px]'>
             <header> <Header /></header>
-
-            <BrowserRouter>
-                <Routes>
-                    <Route path='/' element={<Main />} />
-                    <Route path='/signup' element={<h1>Sign-up</h1>} />
-                </Routes>
-            </BrowserRouter>
-
+            <main >
+                <BrowserRouter>
+                    <Routes>
+                        <Route path='/' element={<Main />} />
+                        <Route path='/signup' element={<h1>Sign-up</h1>} />
+                    </Routes>
+                </BrowserRouter>
+            </main>
             <footer>
-                footer
+                <Footer />
             </footer>
         </div>
     )

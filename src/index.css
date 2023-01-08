@@ -13,13 +13,18 @@
 h1 {
     padding: 0;
     margin: 0;
+
 }
 
-.bg {
-    background: linear-gradient(141deg, rgb(189, 139, 201) 0.00%, rgb(133, 107, 171) 23.93%, rgb(100, 73, 138) 100.00%);
+body {
+    margin: 0px;
+    padding: 0px;
+    background: linear-gradient(141deg, rgb(189, 139, 201) 0.00%, rgb(133, 107, 171) 23.93%, rgb(100, 73, 138) 100.00%) no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
 
-    /* background: rgb(94, 84, 142);
-    background: radial-gradient(circle, rgba(94, 84, 142, 1) 0%, rgba(35, 25, 66, 1) 92%); */
+    /* overflow-x: hidden; */
+
 }
 
 .bold-font {
