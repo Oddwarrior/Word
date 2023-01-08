@@ -1,4 +1,4 @@
-const API_URL = 'https://word-nco2.onrender.com';
+const API_URL = import.meta.env.VITE_SEARCH_URL;
 
 export const getMeaning = async (text) => {
     const response = await fetch(API_URL, {
