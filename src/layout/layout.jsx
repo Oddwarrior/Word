@@ -1,8 +1,8 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Search from '../componenets/Search'
 import Footer from './Footer'
 import Header from './Header'
-import Main from './Main'
 
 export default function Layout() {
     return (
@@ -11,7 +11,7 @@ export default function Layout() {
             <main >
                 <BrowserRouter>
                     <Routes>
-                        <Route path='/' element={<Main />} />
+                        <Route path='/' element={<Search />} />
                         <Route path='/signup' element={<h1>Sign-up</h1>} />
                     </Routes>
                 </BrowserRouter>

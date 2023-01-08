@@ -1,19 +1,19 @@
 import React from 'react'
 
-export default function Meaning() {
-    return (
-        <div className=' bg-[#BE95C4] p-6 m-4 w-[80%] md:w-[500px] m-auto rounded-lg'>
+export default function Meaning({ onDataLoaded, word, partOfSpeech, meaning }) {
+    if (onDataLoaded) return (
+        <div className=' bg-[#BE95C4] p-6 m-4 w-[80%] md:w-[500px] m-auto rounded-lg flex flex-col gap-2'>
             <article>
-                <h1>Word</h1>
-                Dog
+                <h1 className=' font-bold'>Word</h1>
+                {word}
             </article>
             <article>
-                <h1>Part of Speech</h1>
-                Noun
+                <h1 className=' font-bold'>Part of Speech</h1>
+                {partOfSpeech}
             </article>
             <article>
-                <h1>Meaning</h1>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis auctor dolor, sed blandit odio tempor et. Morbi gravida urna ut risus tristique, in malesuada nunc semper. Cras faucibus, dolor sed pulvinar tempus, ex nibh interdum nunc, quis iaculis tortor risus ut tellus. pretium
+                <h1 className=' font-bold'>Meaning</h1>
+                {meaning}
             </article>
         </div>
     )
