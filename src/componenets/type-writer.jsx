@@ -5,7 +5,7 @@ import Typewriter from "typewriter-effect";
 
 function Type(props) {
     return (
-        <div className='  bold-font'>
+        <div className=' '>
             <Typewriter
 
                 onInit={(typewriter) => {

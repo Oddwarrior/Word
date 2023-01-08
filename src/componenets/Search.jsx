@@ -16,11 +16,18 @@ export default function Search() {
         const response = await getMeaning(text);
         setPartOfSpeech(response.partOfSpeech);
         setMeaning(response.definition);
+        setDataLoaded(true);
     }
+
+    //load data only when input is changed
+    useEffect(() => {
+        setDataLoaded(false);
+    }, [text])
+
 
     console.log();
     return (
-        <div className=' pt-4 lg:p-10 lg:pt-24 lg:flex items-center justify-center lg:gap-20'>
+        <div className=' pt-4 lg:p-10 lg:pt-24 lg:flex items-center justify-center lg:gap-20 duration-300'>
             <section className=' lg:p-8'>
 
                 <form onSubmit={handleSubmit} className='flex  flex-col items-center p-4'>
@@ -42,7 +49,7 @@ export default function Search() {
             </section >
 
             <section className='lg:p-8'>
-                <Meaning onDataLoaded={true} word={text} partOfSpeech={partOfSpeech} meaning={meaning[0]?.definition} />
+                <Meaning onDataLoaded={dataLoaded} word={text} partOfSpeech={partOfSpeech} meaning={meaning[0]?.definition} />
             </section>
         </div>
 
