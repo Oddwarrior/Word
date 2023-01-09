@@ -48,7 +48,7 @@ export default function Search() {
                             onChange={(e) => { setText(e.target.value) }}
                             className=' rounded-full h-10 sm:h-12 mt-4 mb-4 md:mt-8 md:mb-8 focus:outline-none p-4 hover:shadow-md'
                             placeholder='Type a word' />
-                        <button type='submit' className='rounded-full bg-[#231942] w-24 sm:w-32 sm:h-12 sm:  py-2 text-[#E0B1CB] m-auto  hover:bg-[#0E0A1C] hover:shadow-md duration-300'>Search</button>
+                        <button type='submit' className='rounded-full bg-[#231942] w-24 sm:w-32 sm:h-12 sm:  py-2 text-[#E0B1CB] m-auto  hover:bg-[#0E0A1C] hover:shadow-md duration-500 hover:scale-[1.01]'>Search</button>
                     </section>
                 </form >
 
