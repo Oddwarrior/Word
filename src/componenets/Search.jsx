@@ -3,6 +3,7 @@ import Type from './type-writer'
 import { useState, useEffect } from 'react';
 import { getMeaning } from '../common/api';
 import Meaning from './meaning';
+import { DotLoader, PacmanLoader, HashLoader } from 'react-spinners';
 
 export default function Search() {
 
@@ -10,12 +11,18 @@ export default function Search() {
     const [partOfSpeech, setPartOfSpeech] = useState("")
     const [meaning, setMeaning] = useState("")
     const [dataLoaded, setDataLoaded] = useState(false)
+    const [showSpinner, setShowSpinner] = useState(false)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setShowSpinner(true);
+        setDataLoaded(false);
+
         const response = await getMeaning(text);
         setPartOfSpeech(response.partOfSpeech);
         setMeaning(response.definition);
+
+        setShowSpinner(false);
         setDataLoaded(true);
     }
 
@@ -25,9 +32,8 @@ export default function Search() {
     }, [text])
 
 
-    console.log();
     return (
-        <div className={`pt-4 lg:p-10 lg:pt-24 lg:flex items-center justify-center  ${dataLoaded}?xl:gap-20 duration-300`}>
+        <div className={`pt-4 lg:p-10 lg:pt-24 lg:flex items-center justify-center  ${dataLoaded}?  xl:gap-20 duration-300`}>
             <section className=' lg:p-8'>
 
                 <form onSubmit={handleSubmit} className='flex  flex-col items-center p-4'>
@@ -49,9 +55,19 @@ export default function Search() {
             </section >
 
             <section className='lg:p-8'>
-                <Meaning onDataLoaded={dataLoaded} word={text} partOfSpeech={partOfSpeech} meaning={meaning[0]?.definition} />
-            </section>
-        </div>
+                {showSpinner && <section className='flex flex-col items-center justify-center m-8 font-semibold text-[231942] '>
+                    <DotLoader
+                        color="#231942"
+                        size={80}
+                    />
+                    <h1 className='mt-4 '> loading your word,</h1>
+                    <h1 > Please wait</h1>
+                </section>}
+                <section className={` ${dataLoaded ? ' block' : 'hidden'}`}>
+                    <Meaning onDataLoaded={dataLoaded} word={text} partOfSpeech={partOfSpeech} meaning={meaning} />
+                </section>
+            </section >
+        </div >
 
     )
 }
