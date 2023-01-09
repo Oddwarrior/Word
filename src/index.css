@@ -22,7 +22,6 @@ body {
     background: linear-gradient(141deg, rgb(189, 139, 201) 0.00%, rgb(133, 107, 171) 23.93%, rgb(100, 73, 138) 100.00%) no-repeat center center fixed;
     background-size: cover;
     height: 100vh;
-
 }
 
 .bold-font {
@@ -38,5 +37,10 @@ body {
         font-size: 50px;
         line-height: 50px;
 
+    }
+
+    body {
+        width: 100%;
+        overflow-x: hidden;
     }
 }
