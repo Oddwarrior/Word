@@ -34,7 +34,7 @@ export default function Search() {
 
     return (
         <div className={`pt-4 lg:p-10 lg:pt-24 lg:flex items-center justify-center  ${dataLoaded && 'xl:gap-20'}  duration-300`}>
-            <section className=' lg:p-8'>
+            <section className={` lg:p-12 lg:border-[#E0B1CB50] ${dataLoaded && `lg:border-r-[1px]`}`}>
 
                 <form onSubmit={handleSubmit} className='flex  flex-col items-center p-4'>
                     <section className=' text-white' >
