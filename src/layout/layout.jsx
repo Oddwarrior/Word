@@ -6,7 +6,7 @@ import Header from './Header'
 
 export default function Layout() {
     return (
-        <div className='  m-0  h-full sm:h-screen w-full grid grid-rows-[auto_1fr_auto]'>
+        <div className='  m-0  h-screen sm:h-screen w-full grid grid-rows-[auto_1fr_50px]'>
             <header> <Header /></header>
             <main >
                 <BrowserRouter>
@@ -16,7 +16,7 @@ export default function Layout() {
                     </Routes>
                 </BrowserRouter>
             </main>
-            <footer>
+            <footer >
                 <Footer />
             </footer>
         </div>
