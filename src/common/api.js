@@ -1,3 +1,4 @@
+
 const API_URL = import.meta.env.VITE_SEARCH_URL;
 
 export const getMeaning = async (text) => {
@@ -10,9 +11,7 @@ export const getMeaning = async (text) => {
             text: text
         })
     })
-
-    return await response.json();
-
+    return response.json();
 }
 
 

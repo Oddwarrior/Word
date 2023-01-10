@@ -10,6 +10,8 @@ export default function Search() {
     const [text, setText] = useState("");
     const [partOfSpeech, setPartOfSpeech] = useState("")
     const [meaning, setMeaning] = useState("")
+    const [message, setMessage] = useState("")
+
     const [dataLoaded, setDataLoaded] = useState(false)
     const [showSpinner, setShowSpinner] = useState(false)
 
@@ -19,8 +21,13 @@ export default function Search() {
         setDataLoaded(false);
 
         const response = await getMeaning(text);
-        setPartOfSpeech(response.partOfSpeech);
-        setMeaning(response.definition);
+
+        if (response.message) {
+            setMessage(response.message);
+        } else {
+            setPartOfSpeech(response.partOfSpeech);
+            setMeaning(response.definition);
+        }
 
         setShowSpinner(false);
         setDataLoaded(true);
@@ -30,7 +37,6 @@ export default function Search() {
     useEffect(() => {
         setDataLoaded(false);
     }, [text])
-
 
     return (
         <div className={`pt-4 lg:p-10 lg:pt-24 lg:flex items-center justify-center  ${dataLoaded && 'xl:gap-20'}  duration-300`}>
@@ -64,7 +70,7 @@ export default function Search() {
                     <h1 > Please wait</h1>
                 </section>}
                 <section className={` ${dataLoaded ? ' block' : 'hidden'}`}>
-                    <Meaning onDataLoaded={dataLoaded} word={text} partOfSpeech={partOfSpeech} meaning={meaning} />
+                    <Meaning onDataLoaded={dataLoaded} word={text} partOfSpeech={partOfSpeech} meaning={meaning} message={message} />
                 </section>
             </section >
         </div >
