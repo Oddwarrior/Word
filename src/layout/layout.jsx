@@ -7,18 +7,18 @@ import Header from './Header'
 export default function Layout() {
     return (
         <div className='  m-0  h-screen sm:h-screen w-full grid grid-rows-[auto_1fr_50px]'>
-            <header> <Header /></header>
-            <main >
-                <BrowserRouter>
+            <BrowserRouter>
+                <header> <Header /></header>
+                <main>
                     <Routes>
                         <Route path='/' element={<Search />} />
                         <Route path='/signup' element={<h1>Sign-up</h1>} />
                     </Routes>
-                </BrowserRouter>
-            </main>
-            <footer >
-                <Footer />
-            </footer>
+                </main>
+                <footer >
+                    <Footer />
+                </footer>
+            </BrowserRouter>
         </div>
     )
 }

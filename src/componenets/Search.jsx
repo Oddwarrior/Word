@@ -3,7 +3,8 @@ import Type from './type-writer'
 import { useState, useEffect } from 'react';
 import { getMeaning } from '../common/api';
 import Meaning from './meaning';
-import { DotLoader, PacmanLoader, HashLoader } from 'react-spinners';
+
+import { DotLoader } from 'react-spinners';
 
 export default function Search() {
 
