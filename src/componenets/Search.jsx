@@ -10,7 +10,7 @@ export default function Search() {
     const [text, setText] = useState("");
     const [partOfSpeech, setPartOfSpeech] = useState("")
     const [meaning, setMeaning] = useState("")
-    const [message, setMessage] = useState("")
+    const [message, setMessage] = useState(null)
 
     const [dataLoaded, setDataLoaded] = useState(false)
     const [showSpinner, setShowSpinner] = useState(false)
@@ -25,6 +25,7 @@ export default function Search() {
         if (response.message) {
             setMessage(response.message);
         } else {
+            setMessage(null);
             setPartOfSpeech(response.partOfSpeech);
             setMeaning(response.definition);
         }
