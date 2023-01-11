@@ -20,12 +20,13 @@ h1 {
 body {
     margin: 0px;
     padding: 0px;
-    background: linear-gradient(141deg, rgb(189, 139, 201) 0.00%, rgb(133, 107, 171) 23.93%, rgb(100, 73, 138) 100.00%) no-repeat center center fixed;
+    /* background: linear-gradient(141deg, rgb(189, 139, 201) 0.00%, rgb(133, 107, 171) 23.93%, rgb(100, 73, 138) 100.00%) no-repeat center center fixed; */
     background-size: cover;
     height: 100vh;
     transition: all ease-in-out;
     transition-duration: 300ms;
 }
+
 
 .bold-font {
     font-family: 'Poppins' sans-serif;

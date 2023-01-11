@@ -3,6 +3,7 @@ import Type from './type-writer'
 import { useState, useEffect } from 'react';
 import { getMeaning } from '../common/api';
 import Meaning from './meaning';
+import vector from '../assets/vector-word.svg'
 
 import { DotLoader } from 'react-spinners';
 
@@ -41,22 +42,24 @@ export default function Search() {
     }, [text])
 
     return (
-        <div className={`pt-4 lg:p-10 lg:pt-24 lg:flex items-center justify-center  ${dataLoaded && 'xl:gap-20'}  duration-300`}>
-            <section className={` lg:p-12 lg:border-[#E0B1CB50] ${dataLoaded && `lg:border-r-[1px]`}`}>
+        <div className={` pt-24 lg:p-10 lg:pt-32 lg:flex items-center justify-evenly  ${dataLoaded && 'xl:gap-20'}  duration-300`}>
+            <section className={` lg:p-12 lg:border-theme-primary-light ${dataLoaded && `lg:border-r-[1px]`}`}>
 
                 <form onSubmit={handleSubmit} className='flex  flex-col items-center p-4'>
-                    <section className=' text-white' >
+                    <section className=' text-theme-primary' >
                         <h1 className='bold-font'>Welcome to</h1>
-                        <h1 className=' text-[#BE95C4] bold-font'><Type string="WORD" /></h1>
+                        <h1 className='text-black bold-font'><Type string="WORD" /></h1>
                     </section>
 
                     <section className='flex flex-col w-[300px] sm:w-[400px] justify-center m-4'>
                         <input name='text'
                             value={text} type='text'
                             onChange={(e) => { setText(e.target.value) }}
-                            className=' rounded-full h-10 sm:h-12 mt-4 mb-4 md:mt-8 md:mb-8 focus:outline-none p-4 hover:shadow-md'
-                            placeholder='Type a word' />
-                        <button type='submit' className='rounded-full bg-[#231942] w-24 sm:w-32 sm:h-12 sm:  py-2 text-[#E0B1CB] m-auto  hover:bg-[#0E0A1C] hover:shadow-md duration-500 hover:scale-[1.01]'>Search</button>
+                            className=' rounded-full h-10 sm:h-12 mt-4 mb-4 md:mt-8 md:mb-8 focus:outline-none p-4  border-gray border-2'
+                            placeholder='Type a word'
+                            autoComplete='off'
+                        />
+                        <button type='submit' className='rounded-full bg-theme-primary w-24 sm:w-32 sm:h-12 sm:  py-2 text-white m-auto  hover:bg-theme-primary-dark hover:shadow-md duration-300 '>Search</button>
                     </section>
                 </form >
 
@@ -65,11 +68,15 @@ export default function Search() {
             <section className='lg:p-8'>
                 {showSpinner && <section className='flex flex-col items-center justify-center m-8 font-semibold text-[231942] '>
                     <DotLoader
-                        color="#231942"
+                        color="#f72585"
                         size={80}
                     />
                     <h1 className='mt-4 '> loading your word,</h1>
                     <h1 > Please wait</h1>
+                </section>}
+
+                {!dataLoaded && !showSpinner && <section className='h-60 w-60 md:h-80 md:w-80 object-contain flex items-center justify-center m-auto'>
+                    <img src={vector} />
                 </section>}
                 <section className={` ${dataLoaded ? ' block' : 'hidden'}`}>
                     <Meaning onDataLoaded={dataLoaded} word={text} partOfSpeech={partOfSpeech} meaning={meaning} message={message} />
