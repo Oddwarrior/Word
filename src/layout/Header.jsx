@@ -1,43 +1,63 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { CgProfile } from 'react-icons/cg'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 
 import logo from '../assets/logo.png'
+import Menu from '../componenets/Menu'
+import MenuMobile from '../componenets/MenuMobile'
 
 
 export default function Header() {
 
     const [fixed, setFixed] = useState(false);
+    const [showMenu, setShowMenu] = useState(false);
+
+    function handleMenu() {
+
+        setShowMenu(!showMenu);
+    }
+
+    useEffect(() => {
+        if (showMenu) document.body.classList.add('overflow-hidden');
+        return () => {
+            document.body.classList.remove('overflow-hidden');
+        }
+    }, [handleMenu])
+
 
     window.addEventListener('scroll', () => {
         (window.scrollY >= 80) ? setFixed(true) : setFixed(false);
     });
 
     return (
-        <nav className={`flex p-6 pl-8 bg-theme-primary h-[60px] items-center gap-4 md:justify-between fixed z-10 w-full ${fixed ? 'shadow-md' : ''} `}>
+        <div >
+            <nav className={`flex  bg-theme-primary h-[60px] items-center gap-4 justify-between fixed  z-20 w-full ${fixed ? ' shadow-xl' : ''} `}>
 
-            <Link to='/' className='flex  items-center cursor-pointer justify-start w-8 h-8 gap-2 object-contain ' >
-                <img src={logo} alt='logo' />
-                <span className=' font-bold text-md'>WORD</span>
-            </Link >
+                <Link to='/' className='flex ml-6 items-center cursor-pointer justify-start w-8 h-8 gap-2 object-contain ' >
+                    <img src={logo} alt='logo' />
+                    <span className=' font-bold text-md'>WORD</span>
+                </Link >
 
-            <section className='md:flex  gap-4 items-center invisible md:visible'>
-                <ul className='md:flex  gap-4 p-4 font-medium text-white '>
-                    <Link to='/' className=' hover:text-theme-primary-light duration-300 transition-colors ease-linear'>Home</Link>
-                    <Link className=' hover:text-theme-primary-light duration-300 transition-colors ease-linear'>About</Link>
-                    <Link className=' hover:text-theme-primary-light duration-300 transition-colors ease-linear'>Contact</Link>
-                </ul>
-
-                <button className='rounded-full bg-black h-10 px-4 text-white  hover:bg-[#0E0A1C] hover:shadow-md duration-500 hover:scale-[1.01] '>add a word</button>
-
-                <section className='flex items-center  gap-1 bg- bg-[#23194250] rounded-full pr-2 '>
-                    <span className='text-white'><CgProfile size={25} /></span>
-                    <h1 className='text-sm font-semibold'>Username</h1>
+                <section className='flex gap-2 items-center mr-6'>
+                    <article className='hidden md:block'><Menu /></article>
+                    <article className='rounded-full pr-2 flex flex-col items-center justify-center'>
+                        <span className='text-white'><CgProfile size={25} /></span>
+                    </article>
+                    <section className=' md:hidden border border2 p-1 text-sm font-semibold text-white rounded border-white cursor-pointer'
+                        onClick={handleMenu}
+                    >Menu</section>
                 </section>
-            </section>
 
-        </nav >
+            </nav >
+            <section className={`z-10 absolute ${showMenu ? `top-[60px] ` : 'top-[-200px]'} w-full p-4 right-0 left-0 bg-white shadow-md md:hidden transition-all ease-out duration-500 `}>
+                <ul>
+                    <MenuMobile />
+                </ul>
+            </section>
+            {showMenu && <div className='w-full h-screen bg-black opacity-50 fixed z-0 md:hidden right-0 left-0 top-0 bottom-0'></div>}
+
+        </div>
     )
 }

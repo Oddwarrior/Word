@@ -42,8 +42,8 @@ export default function Search() {
     }, [text])
 
     return (
-        <div className={` pt-24 lg:p-10 lg:pt-32 lg:flex items-center justify-evenly  ${dataLoaded && 'xl:gap-20'}  duration-300`}>
-            <section className={` lg:p-12 lg:border-theme-primary-light ${dataLoaded && `lg:border-r-[1px]`}`}>
+        <div className={` pt-24 lg:p-10 lg:pt-32 lg:grid grid-cols-2 items-center justify-evenly   duration-300`}>
+            <section className={` lg:p-12 lg:border-theme-primary-light lg:border-r-[1px]`}>
 
                 <form onSubmit={handleSubmit} className='flex  flex-col items-center p-4'>
                     <section className=' text-theme-primary' >
@@ -51,7 +51,7 @@ export default function Search() {
                         <h1 className='text-black bold-font'><Type string="WORD" /></h1>
                     </section>
 
-                    <section className='flex flex-col w-[300px] sm:w-[400px] justify-center m-4'>
+                    <section className='flex flex-col w-[300px] md:w-[400px] justify-center m-4'>
                         <input name='text'
                             value={text} type='text'
                             onChange={(e) => { setText(e.target.value) }}
@@ -81,7 +81,9 @@ export default function Search() {
                 <section className={` ${dataLoaded ? ' block' : 'hidden'}`}>
                     <Meaning onDataLoaded={dataLoaded} word={text} partOfSpeech={partOfSpeech} meaning={meaning} message={message} />
                 </section>
-            </section >
+
+            </section>
+
         </div >
 
     )
