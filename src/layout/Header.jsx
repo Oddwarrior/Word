@@ -43,19 +43,21 @@ export default function Header() {
                 <section className='flex gap-2 items-center mr-6'>
                     <article className='hidden md:block'><Menu /></article>
                     <article className='rounded-full pr-2 flex flex-col items-center justify-center'>
-                        <span className='text-white'><CgProfile size={25} /></span>
+                        <NavLink to={'/signup'} className='text-white'>
+                            <CgProfile size={25} />
+                        </NavLink>
                     </article>
                     <section className=' md:hidden border border2 p-1 text-sm font-semibold text-white rounded border-white cursor-pointer'
                         onClick={handleMenu}
                     >Menu</section>
                 </section>
 
+                <section className={`z-10 absolute top-[60px] ${showMenu ? ` opacity-100 ` : 'opacity-0'} w-full p-4 right-0 left-0 bg-white shadow-md md:hidden transition-all  ease-in-out duration-500 `}>
+                    <ul>
+                        <MenuMobile />
+                    </ul>
+                </section>
             </nav >
-            <section className={`z-10 absolute ${showMenu ? `top-[60px] ` : 'top-[-200px]'} w-full p-4 right-0 left-0 bg-white shadow-md md:hidden transition-all ease-out duration-500 `}>
-                <ul>
-                    <MenuMobile />
-                </ul>
-            </section>
             {showMenu && <div className='w-full h-screen bg-black opacity-50 fixed z-0 md:hidden right-0 left-0 top-0 bottom-0'></div>}
 
         </div>
