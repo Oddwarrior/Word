@@ -5,7 +5,7 @@ import { Route, Routes } from 'react-router-dom'
 
 import loginVector from '../assets/loginVector.svg';
 import Signup from '../componenets/signup/Signup';
-import Login from '../componenets/signup/Login';
+import Login from '../componenets/signup/login';
 
 
 function Auth() {
