@@ -43,7 +43,7 @@ export default function Header() {
                 <section className='flex gap-2 items-center mr-6'>
                     <article className='hidden md:block'><Menu /></article>
                     <article className='rounded-full pr-2 flex flex-col items-center justify-center'>
-                        <NavLink to='/user' className='text-white'>
+                        <NavLink to='/user/login' className='text-white'>
                             <CgProfile size={25} />
                         </NavLink>
                     </article>

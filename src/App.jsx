@@ -1,10 +1,9 @@
-import Layout from "./layout/layout"
-
+import AppRouter from "./layout/AppRouter"
 
 function App() {
   return (
     <div >
-      <Layout />
+      <AppRouter />
     </div>
   )
 }
