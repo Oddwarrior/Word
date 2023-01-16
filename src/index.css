@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@700&family=Montserrat&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -10,12 +11,6 @@
     scroll-behavior: smooth;
 }
 
-h1 {
-    padding: 0;
-    margin: 0;
-
-}
-
 body {
     margin: 0px;
     padding: 0px;
@@ -25,9 +20,20 @@ body {
     transition: all ease-in-out;
     transition-duration: 300ms;
     font-family: 'Poppins' sans-serif;
-    font-style: normal;
+
 }
 
+
+h1 {
+    padding: 0;
+    margin: 0;
+
+}
+
+.font-monts {
+    font-family: 'Manrope', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+}
 
 .bold-font {
     font-family: 'Poppins' sans-serif;
