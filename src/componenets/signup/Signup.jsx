@@ -11,6 +11,8 @@ function Signup() {
         const user = signupData;
         const response = await createUser({ user });
         console.log(response);
+        if (response.status == "ok") window.location.href = "./login"
+        else alert(response.error);
     }
 
     return (
