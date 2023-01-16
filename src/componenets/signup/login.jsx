@@ -1,5 +1,6 @@
 import React from 'react'
-import googleIcon from '../signup/google-icon.png'
+import googleIcon from '../../assets/google-icon.png'
+
 
 function Login() {
     return (
@@ -30,8 +31,8 @@ function Login() {
                     />
                     <label className=' text-center m-2  text-gray-500'>OR</label>
 
-                    <section className=' w-full text-white border-2 p-3  h-12 rounded-full pl-6 flex items-center justify-center active:bg-gray-200 cursor-pointer'>
-                        <article className='h-8 w-8 object-contain'>
+                    <section className=' w-full text-white border-2 p-3  h-12 rounded-full pl-6 flex items-center justify-center active:bg-gray-200 cursor-pointer hover:shadow-sm'>
+                        <article className='h-8 w-8 object-contain '>
                             <img src={googleIcon} />
                         </article>
                     </section>
