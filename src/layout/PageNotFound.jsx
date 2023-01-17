@@ -13,7 +13,7 @@ function PageNotFound() {
                     <img src={pageNotFound} />
                 </article>
                 <article className='p-4 text-center'>
-                    <h1 className='text font-semibold'>Page Not Found, please chek URL entered or visit <Link className=' text-theme-primary' to='/'>Home</Link></h1>
+                    <h1 className='text font-semibold'>Page Not Found, please check  the URL or visit <Link className=' text-theme-primary' to='/'>Home</Link></h1>
                 </article>
             </section>
 
