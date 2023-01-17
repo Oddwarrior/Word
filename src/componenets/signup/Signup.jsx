@@ -5,19 +5,19 @@ import { createUser } from '../../common/api'
 
 function Signup() {
 
-    const [signupData, setSignupData] = useState({ fname: "fname", lname: "lname", email: "email", mobile: "mobile", password: "password" });
+    const [signupData, setSignupData] = useState({ fname: "", lname: "", email: "", mobile: "", password: "" });
     const [res, setRes] = useState({});
+
     const handleSignup = async (e) => {
         e.preventDefault();
         const user = signupData;
         const response = await createUser({ user });
-        console.log(response);
         setRes(response);
     }
 
     return (
         <div className='w-full  md:w-[500px]  px-8  '>
-            {res?.status && (<Navigate to="/user/login" replace={true} />)}
+            {res?.status && <Navigate to='/profile' replace={true} />}
             <form className='flex flex-col gap-1 h-full ' onSubmit={handleSignup}>
 
                 {res?.error && <p className=' w-full px-4  text-xs p-2 rounded-md animate-pulse text-red-600 break-words bg-red-100'>*{res.error}</p>}
@@ -25,6 +25,7 @@ function Signup() {
                 <label className='text-gray-500 pt-1 pl-4 font-semibold'>First name :</label>
                 <input name='fname'
                     type='text'
+                    value={signupData.fname}
                     className=' mx-1 h-10 border p-3 rounded-full pl-6 transitioon-color duration-300 outline-none focus:outline-theme-primary-light  focus:border-none'
                     placeholder='Enter your first name'
                     required
@@ -50,6 +51,7 @@ function Signup() {
                 <label className='text-gray-500 pt-1 pl-4 font-semibold' >Email :</label>
                 <input name='email'
                     type='email'
+                    value={signupData.email}
                     className=' m-1 border h-10  p-3 rounded-full pl-6 transitioon-color duration-300 outline-none focus:outline-theme-primary-light  focus:border-none'
                     placeholder='Enter your email '
                     required
@@ -59,6 +61,7 @@ function Signup() {
                 <label className='text-gray-500 pt-1 pl-4 font-semibold'>Password :</label>
                 <input name='password'
                     type='password'
+                    value={signupData.password}
                     className=' m-1 border h-10  p-3 rounded-full pl-6 transitioon-color duration-300 outline-none focus:outline-theme-primary-light  focus:border-none'
                     placeholder='Set a password'
                     required

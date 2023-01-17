@@ -1,5 +1,4 @@
-import React from 'react'
-import { useState } from 'react';
+import React, { useState } from 'react'
 import { Link, Outlet, Route, Routes } from 'react-router-dom'
 import logo from '../assets/logo.png'
 import loginVector from '../assets/loginVector.svg';

@@ -14,7 +14,7 @@ export const getMeaning = async (text) => {
     return response.json();
 }
 
-
+//signup
 export const createUser = async ({ user }) => {
 
     const { fname, lname, email, mobile, password } = user;
@@ -32,8 +32,31 @@ export const createUser = async ({ user }) => {
             password
         })
     });
+    const result = await response.json();
+    console.log(result);
 
-    return await response.json();
+    return result;
 }
 
+//login
+export const logUser = async ({ email, password }) => {
 
+    const response = await fetch(`${URL}/user/signin`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            email,
+            password
+        })
+    });
+
+    const result = await response.json();
+    console.log(result);
+
+    const { token } = result;
+    if (result.status == "ok") localStorage.setItem('token', token);
+
+    return result;
+}
