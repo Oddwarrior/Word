@@ -4,20 +4,24 @@ import googleIcon from '../../assets/google-icon.png'
 import { Navigate } from 'react-router-dom';
 import { motion as m } from 'framer-motion';
 import useAuth from '../../common/AuthContext';
+import PulseLoader from 'react-spinners/PulseLoader';
 
 function Login() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [res, setRes] = useState({});
+    const [res, setRes] = useState(null);
+    const [showLoader, setShowLoader] = useState(false)
     const { login } = useAuth();
 
     const handleLogin = async (e) => {
         e.preventDefault();
+        setShowLoader(true);
         const response = await logUser({ email, password });
         if (response.status == "ok") {
             login(response.token)
         }
+        setShowLoader(false)
         setRes(response);
 
     }
@@ -52,11 +56,13 @@ function Login() {
                 />
 
                 <section className='flex flex-col'>
-                    <input
+                    <button
                         type='submit'
-                        className='  text-white border p-3 mt-6 rounded-full pl-6  bg-theme-primary cursor-pointer active:bg-theme-primary-dark'
-                        value="Login"
-                    />
+                        className='  text-white border p-3 mt-6 rounded-full pl-6 h-12 bg-theme-primary cursor-pointer active:bg-theme-primary-dark'
+                    >
+                        {showLoader ? <PulseLoader size={8} color="#ffffff" /> : "Login"}
+                    </button>
+
                     <label className=' text-center m-2  text-gray-500'>OR</label>
 
                     <section className=' w-full text-white border-2 p-3  h-12 rounded-full pl-6 flex items-center justify-center active:bg-gray-200 cursor-pointer hover:shadow-sm'>

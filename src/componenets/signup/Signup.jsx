@@ -3,17 +3,21 @@ import { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { createUser } from '../../common/api'
 import { motion as m } from 'framer-motion';
+import PulseLoader from 'react-spinners/PulseLoader';
 
 function Signup() {
 
     const [signupData, setSignupData] = useState({ fname: "", lname: "", email: "", mobile: "", password: "" });
     const [res, setRes] = useState({});
+    const [showLoader, setShowLoader] = useState(false)
 
     const handleSignup = async (e) => {
         e.preventDefault();
+        setShowLoader(true);
         const user = signupData;
         const response = await createUser({ user });
         setRes(response);
+        setShowLoader(false);
     }
 
     return (
@@ -72,11 +76,11 @@ function Signup() {
                     onChange={(e) => setSignupData({ ...signupData, password: e.target.value })}
                 />
 
-                <input
+                <button
                     type='submit'
-                    className='  text-white border p-3 mt-4 rounded-full pl-6  bg-theme-primary cursor-pointer active:bg-theme-primary-dark'
-                    value="Signup"
-                />
+                    className='  text-white border p-3 mt-6 rounded-full pl-6 h-12 bg-theme-primary cursor-pointer active:bg-theme-primary-dark'>
+                    {showLoader ? <PulseLoader size={8} color="#ffffff" /> : "Signup"}
+                </button>
 
             </form>
         </m.div>
