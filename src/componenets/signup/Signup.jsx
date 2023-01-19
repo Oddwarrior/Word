@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { createUser } from '../../common/api'
+import { motion as m } from 'framer-motion';
 
 function Signup() {
 
@@ -16,7 +17,10 @@ function Signup() {
     }
 
     return (
-        <div className='w-full  md:w-[500px]  px-8  '>
+        <m.div className='w-full  md:w-[500px]  px-8 '
+            initial={{ x: 40 }}
+            animate={{ x: 0 }}
+        >
             {res?.status && <Navigate to='/profile' replace={true} />}
             <form className='flex flex-col gap-1 h-full ' onSubmit={handleSignup}>
 
@@ -75,7 +79,7 @@ function Signup() {
                 />
 
             </form>
-        </div>
+        </m.div>
     )
 }
 

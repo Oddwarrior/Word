@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 export default function Meaning({ word, partOfSpeech, meaning, message }) {
     if (message) {
         return (

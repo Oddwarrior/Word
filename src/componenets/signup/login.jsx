@@ -1,24 +1,32 @@
 import React, { useState } from 'react'
 import { logUser } from '../../common/api'
 import googleIcon from '../../assets/google-icon.png'
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
+import { motion as m } from 'framer-motion';
+import useAuth from '../../common/AuthContext';
 
 function Login() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [res, setRes] = useState({});
-
+    const { login } = useAuth();
 
     const handleLogin = async (e) => {
         e.preventDefault();
         const response = await logUser({ email, password });
-        if (response.status == "ok") alert("Login successfull")
+        if (response.status == "ok") {
+            login(response.token)
+        }
         setRes(response);
+
     }
 
     return (
-        <div className='w-full  md:w-[500px] px-8   '>
+        <m.div className='w-full  md:w-[500px] px-8 '
+            initial={{ x: -40 }}
+            animate={{ x: 0 }}
+        >
             {res?.status && <Navigate to='/profile' replace={true} />}
             <form onSubmit={handleLogin} className='flex flex-col gap-1 h-full py-2'>
                 {res?.error && <p className=' w-full px-4  text-xs p-2 rounded-md animate-pulse text-red-600 break-words bg-red-100'>*{res.error}</p>}
@@ -60,7 +68,7 @@ function Login() {
                 </section>
 
             </form>
-        </div>
+        </m.div>
 
     )
 }

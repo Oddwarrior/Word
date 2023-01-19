@@ -1,5 +1,5 @@
-
 const URL = import.meta.env.VITE_BASE_URL;
+
 
 export const getMeaning = async (text) => {
     const response = await fetch(URL, {
@@ -54,9 +54,6 @@ export const logUser = async ({ email, password }) => {
 
     const result = await response.json();
     console.log(result);
-
-    const { token } = result;
-    if (result.status == "ok") localStorage.setItem('token', token);
 
     return result;
 }
