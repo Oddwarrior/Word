@@ -11,6 +11,7 @@ function Signup() {
     const [res, setRes] = useState({});
     const [showLoader, setShowLoader] = useState(false)
 
+
     const handleSignup = async (e) => {
         e.preventDefault();
         setShowLoader(true);
@@ -25,6 +26,7 @@ function Signup() {
             initial={{ x: 40 }}
             animate={{ x: 0 }}
         >
+            {res?.message && <p className=' w-full px-4  text-xs p-4 rounded-md animate-pulse text-green-600 break-words bg-green-100'>*{res.message}</p>}
             {res?.status && <Navigate to='/profile' replace={true} />}
             <form className='flex flex-col gap-1 h-full ' onSubmit={handleSignup}>
 

@@ -58,8 +58,7 @@ function Login() {
                 <section className='flex flex-col'>
                     <button
                         type='submit'
-                        className='  text-white border p-3 mt-6 rounded-full pl-6 h-12 bg-theme-primary cursor-pointer active:bg-theme-primary-dark'
-                    >
+                        className='  text-white border p-3 mt-6 rounded-full pl-6 h-12 bg-theme-primary cursor-pointer active:bg-theme-primary-dark'>
                         {showLoader ? <PulseLoader size={8} color="#ffffff" /> : "Login"}
                     </button>
 
@@ -70,6 +69,7 @@ function Login() {
                             <img src={googleIcon} />
                         </article>
                     </section>
+
                     <label className=' text-center m-2 text-sm  text-gray-500 font-monts'>continue with google</label>
                 </section>
 
