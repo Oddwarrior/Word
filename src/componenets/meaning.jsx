@@ -4,7 +4,7 @@ import React from 'react'
 export default function Meaning({ word, partOfSpeech, meaning, message }) {
     if (message) {
         return (
-            <div className='shadow-md border border-gray-2 p-6 m-4 w-[80%] md:w-[500px] m-auto rounded-lg flex flex-col gap-2' >
+            <div className='shadow-md border border-gray-2 p-6 w-[80%] md:w-[500px] m-auto rounded-lg flex flex-col gap-2' >
                 <section>
                     <h1 className=' font-bold text-theme-primary'>oops</h1>
                     {message}
@@ -15,7 +15,7 @@ export default function Meaning({ word, partOfSpeech, meaning, message }) {
     }
     return (
 
-        <div className='shadow-md border border-gray-2 p-6 m-4 w-[80%] md:w-[500px] m-auto rounded-lg flex flex-col gap-2' >
+        <div className='shadow-md border border-gray-2 p-6  w-[80%] md:w-[500px] m-auto rounded-lg flex flex-col gap-2' >
             <section>
                 <article>
                     <h1 className=' font-bold text-theme-primary'>Word</h1>
