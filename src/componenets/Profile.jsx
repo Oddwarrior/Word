@@ -61,7 +61,7 @@ function Profile() {
                     <li className=' border-b-2 border-gray-300 p-2 text-center rounded-lg ease-in hover:bg-black hover:text-white transition-colors duration-300 cursor-pointer'>Setting</li>
                     <li
                         className='  p-2 mt-2 text-center cursor-pointer bg-theme-primary text-white rounded-lg active:bg-theme-primary-dark'
-                        onClick={() => logout()}
+                        onClick={() => { if (confirm("Are you sure you want to logout?")) logout() }}
                     >Logout</li>
                 </ul>
             </div>
