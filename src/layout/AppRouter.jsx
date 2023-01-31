@@ -16,7 +16,7 @@ export default function AppRouter() {
                     <Route index element={<Home />} />
 
                     <Route element={<ProtectedRoutes />}>
-                        <Route path='profile' element={<Profile />} />
+                        <Route path='/user/profile/:id' element={<Profile />} />
                     </Route>
 
                     <Route path='auth' element={<Auth />} >

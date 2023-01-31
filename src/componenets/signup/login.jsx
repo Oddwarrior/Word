@@ -12,6 +12,8 @@ function Login() {
     const [password, setPassword] = useState("");
     const [res, setRes] = useState(null);
     const [showLoader, setShowLoader] = useState(false)
+    const { user } = useAuth();
+
     const { login } = useAuth();
 
     const handleLogin = async (e) => {
@@ -19,7 +21,8 @@ function Login() {
         setShowLoader(true);
         const response = await logUser({ email, password });
         if (response.status == "ok") {
-            login(response.token)
+            const { token, user } = response;
+            login(token, user);
         }
         setShowLoader(false)
         setRes(response);
@@ -31,7 +34,7 @@ function Login() {
             initial={{ x: -40 }}
             animate={{ x: 0 }}
         >
-            {res?.status && <Navigate to='/profile' replace={true} />}
+            {res?.status && <Navigate to={`/user/profile/${user?.id}`} replace={true} />}
             <form onSubmit={handleLogin} className='flex flex-col gap-1 h-full py-2'>
                 {res?.error && <p className=' w-full px-4  text-xs p-2 rounded-md animate-pulse text-red-600 break-words bg-red-100'>*{res.error}</p>}
                 <label className='text-gray-500 pt-1 pl-4 font-semibold' >Email :</label>

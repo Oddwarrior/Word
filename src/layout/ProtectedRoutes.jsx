@@ -4,10 +4,10 @@ import useAuth from '../common/AuthContext';
 
 export default function ProtectedRoutes() {
 
-    let auth = useAuth();
+    let { user, token } = useAuth();
 
     return (
-        auth?.user ? <Outlet /> : <Navigate to="/auth/login" />
+        token ? <Outlet /> : <Navigate to="/auth/login" />
     )
 }
 

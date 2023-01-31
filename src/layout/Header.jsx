@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom'
 import { CgProfile } from 'react-icons/cg'
 import { useState, useEffect } from 'react'
 import { GiHamburgerMenu } from 'react-icons/gi'
+import useAuth from '../common/AuthContext'
 
 
 import logo from '../assets/logo.png'
@@ -10,6 +11,7 @@ import Menu from '../componenets/Menu'
 
 export default function Header() {
 
+    const { user } = useAuth();
     const [fixed, setFixed] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
 
@@ -43,7 +45,7 @@ export default function Header() {
                     <section className='flex gap-2 items-center mr-6'>
                         <article className='hidden md:block'><Menu /></article>
                         <article className='rounded-full pr-2 flex flex-col items-center justify-center'>
-                            <NavLink to='/profile' className='text-white'>
+                            <NavLink to={`/user/profile/${user?.id}`} className='text-white'>
                                 <CgProfile size={25} />
                             </NavLink>
                         </article>

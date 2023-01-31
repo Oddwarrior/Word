@@ -27,7 +27,7 @@ function Signup() {
             animate={{ x: 0 }}
         >
             {res?.message && <p className=' w-full px-4  text-xs p-4 rounded-md animate-pulse text-green-600 break-words bg-green-100'>*{res.message}</p>}
-            {res?.status && <Navigate to='/profile' replace={true} />}
+            {res?.status && <Navigate to='/user/profile/me' replace={true} />}
             <form className='flex flex-col gap-1 h-full ' onSubmit={handleSignup}>
 
                 {res?.error && <p className=' w-full px-4  text-xs p-2 rounded-md animate-pulse text-red-600 break-words bg-red-100'>*{res.error}</p>}

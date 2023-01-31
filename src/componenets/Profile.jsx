@@ -1,11 +1,12 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom';
+import { updateUserWords } from '../common/api';
 import useAuth from '../common/AuthContext'
 import { motion as m } from 'framer-motion';
 import { HiHome } from 'react-icons/hi'
 
 function Profile() {
-    const { logout } = useAuth();
+    const { token, user, logout } = useAuth();
     const navigate = useNavigate();
     return (
         <m.div className='p-4 flex flex-col md:flex-row-reverse gap-4  h-screen m-2'
@@ -15,14 +16,14 @@ function Profile() {
             <div className='w-full grid grid-rows-2 md:grid-rows-[250px_auto] '>
                 <section className='shadow-lg rounded-2xl mb-4  '>
                     <section className='flex flex-col md:flex-row gap-4 items-center justify-center p-4'>
-                        <article className='h-40 w-40 bg-slate-600 rounded-full flex  items-center justify-center text-3xl font-bold text-white'>
-                            <p >SJ</p>
+                        <article className='h-40 w-40 bg-slate-600 rounded-full flex  items-center justify-center text-3xl font-bold text-white uppercase'>
+                            <p >{`${user?.fname[0]}${user?.lname[0]} `}</p>
                         </article>
                         <article className='text-center md:text-left'>
-                            <h1 className='font-bold p-1 text-xl'>Shashank Jagtap</h1>
-                            <p className='font-thin p-1'>Shashankjagtap8806@gmail.com</p>
+                            <h1 className='font-bold p-1 text-xl capitalize'>{`${user?.fname} ${user?.lname} `}</h1>
+                            <p className='font-thin p-1'>{`${user?.email}`}</p>
                             <section className='flex justify-center md:justify-start items-center gap-4 p-2'>
-                                <article className=' grid grid-rows-2 font-bold text-theme-primary'>20 <p className=' text-black'>Words</p></article>
+                                <article className=' grid grid-rows-2 font-bold text-theme-primary'> {`${user?.words?.length}`} <p className=' text-black'>Words</p></article>
                                 <article className=' grid grid-rows-2 font-bold text-theme-primary'>15 <p className=' text-black'>Likes</p></article>
                             </section>
                         </article>
@@ -31,6 +32,7 @@ function Profile() {
                 </section>
 
                 <section className='p-4 shadow-lg rounded-xl'>
+                    <button onClick={() => updateUserWords({ "word": "word" }, token, user?.id)}> Add word</button>
                     <h1 className='p-4 text-center'>Saved words</h1>
                     {/* <article className=' flex flex-wrap gap-4 justify-evenly'>
                         <article className='p-4 bg-theme-primary rounded-xl w-20 text-white'> word1</article>
