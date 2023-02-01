@@ -45,8 +45,9 @@ export default function Header() {
                     <section className='flex gap-2 items-center mr-6'>
                         <article className='hidden md:block'><Menu /></article>
                         <article className='rounded-full pr-2 flex flex-col items-center justify-center'>
-                            <NavLink to={`/user/profile/${user?.id}`} className='text-white'>
+                            <NavLink to={`/user/profile/${user?.id}`} className='text-white flex gap-2 items-center justify-center capitalize'>
                                 <CgProfile size={25} />
+                                <p className='text-sm'>{user ? user.fname : "log in"}</p>
                             </NavLink>
                         </article>
                         <section className=' md:hidden text-white border2 cursor-pointer'

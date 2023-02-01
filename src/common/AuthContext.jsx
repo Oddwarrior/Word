@@ -1,4 +1,5 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
+import { getUserProfile } from "./api";
 
 const AuthContext = createContext(null);
 
@@ -20,13 +21,24 @@ export const AuthProvider = ({ children }) => {
     const logout = () => {
         setToken(null);
         setUser(null);
-        localStorage.removeItem('token');
+        localStorage.clear();
     }
 
     const updateUser = (words) => {
         const updatedUser = { ...user, words: words };
         setUser(updatedUser);
         console.log("updateing user state", words);
+        localStorage.setItem('user', JSON.stringify(updatedUser));
+    }
+
+    // useEffect(() => {
+    //     syncUserData();
+    //     console.log("syncing changes");
+    // }, [])
+
+    async function syncUserData() {
+        const updatedUser = await getUserProfile(token, user?.id);
+        setUser(updatedUser);
         localStorage.setItem('user', JSON.stringify(updatedUser));
     }
 

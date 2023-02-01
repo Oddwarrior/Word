@@ -81,4 +81,17 @@ export const updateUserWords = async (word, token, id) => {
     return result;
 }
 
+export const getUserProfile = async (token, id) => {
+    const response = await fetch(`${URL}/user/profile/${id}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        }
+    })
 
+    const result = await response.json();
+    console.log("user profile: ", result);
+
+    return result;
+}
