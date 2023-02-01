@@ -6,8 +6,13 @@ import { motion as m } from 'framer-motion';
 import { HiHome } from 'react-icons/hi'
 
 function Profile() {
-    const { token, user, logout } = useAuth();
+    const { token, user, logout, updateUser } = useAuth();
     const navigate = useNavigate();
+
+    async function handleUpdate() {
+        const response = await updateUserWords({ "title": "demoWord" }, token, user?.id);
+        if (response.status == "ok") updateUser(response.user.words)
+    }
     return (
         <m.div className='p-4 flex flex-col md:flex-row-reverse gap-4  h-screen m-2'
             initial={{ x: 40 }}
@@ -32,7 +37,7 @@ function Profile() {
                 </section>
 
                 <section className='p-4 shadow-lg rounded-xl'>
-                    <button onClick={() => updateUserWords({ "word": "word" }, token, user?.id)}> Add word</button>
+                    <button onClick={handleUpdate}> Add word</button>
                     <h1 className='p-4 text-center'>Saved words</h1>
                     {/* <article className=' flex flex-wrap gap-4 justify-evenly'>
                         <article className='p-4 bg-theme-primary rounded-xl w-20 text-white'> word1</article>

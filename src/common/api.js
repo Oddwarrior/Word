@@ -58,23 +58,27 @@ export const logUser = async ({ email, password }) => {
     return result;
 }
 
-//updateWord
-export const updateUserWords = async ({ word }, token, id) => {
+// updateWord
+export const updateUserWords = async (word, token, id) => {
 
     const response = await fetch(`${URL}/user/updateWord/${id}`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`,
+            Authorization: `Bearer ${token}`,
             "Access-Control-Allow-Headers": "Content-Type, Authorization",
             'Access-Control-Allow-Origin': '*',
-            "Access-Control-Allow-Methods": "OPTIONS ,POST,GET, PATCH"
+            "Access-Control-Allow-Methods": "OPTIONS ,POST, GET, PATCH"
         },
-        body: JSON.stringify(word)
+        body: JSON.stringify({
+            word
+        })
     });
 
     const result = await response.json();
-    console.log("user updated: " + result);
+    console.log("user updated: ", result);
 
     return result;
 }
+
+
