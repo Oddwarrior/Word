@@ -11,7 +11,7 @@ function Profile() {
 
     async function handleUpdate() {
         const response = await updateUserWords({ "title": "demoWord" }, token, user?.id);
-        if (response.status == "ok") updateUser(response.user.words)
+        if (response.status == "ok") updateUser(response.words)
     }
     return (
         <m.div className='p-4 flex flex-col md:flex-row-reverse gap-4  h-screen m-2'
@@ -39,17 +39,11 @@ function Profile() {
                 <section className='p-4 shadow-lg rounded-xl'>
                     <button onClick={handleUpdate}> Add word</button>
                     <h1 className='p-4 text-center'>Saved words</h1>
-                    {/* <article className=' flex flex-wrap gap-4 justify-evenly'>
-                        <article className='p-4 bg-theme-primary rounded-xl w-20 text-white'> word1</article>
-                        <article className='p-4 bg-theme-primary rounded-xl w-20 text-white'> word1</article>
-                        <article className='p-4 bg-theme-primary rounded-xl w-20 text-white'> word1</article>
-                        <article className='p-4 bg-theme-primary rounded-xl w-20 text-white'> word1</article>
-                        <article className='p-4 bg-theme-primary rounded-xl w-20 text-white'> word1</article>
-                        <article className='p-4 bg-theme-primary rounded-xl w-20 text-white'> word1</article>
-                        <article className='p-4 bg-theme-primary rounded-xl w-20 text-white'> word1</article>
-                        <article className='p-4 bg-theme-primary rounded-xl w-20 text-white'> word1</article>
+                    <article className=' flex flex-wrap gap-4 justify-evenly'>
+                        {user.words.map(word => <article key={word.title} className='p-4 bg-theme-primary rounded-xl w-20 text-white'> {word.title} </article>)}
 
-                    </article> */}
+
+                    </article>
 
                 </section>
             </div>
