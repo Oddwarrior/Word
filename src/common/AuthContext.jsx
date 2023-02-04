@@ -24,26 +24,19 @@ export const AuthProvider = ({ children }) => {
         localStorage.clear();
     }
 
-    const updateUser = (words) => {
+    const updateWords = (words) => {
         const updatedUser = { ...user, words: words };
         setUser(updatedUser);
         console.log("updateing user state", words);
-        localStorage.setItem('user', JSON.stringify(updatedUser));
+
     }
 
-    // useEffect(() => {
-    //     syncUserData();
-    //     console.log("syncing changes");
-    // }, [])
-
-    async function syncUserData() {
-        const updatedUser = await getUserProfile(token, user?.id);
+    const updateUser = (updatedUser) => {
         setUser(updatedUser);
         localStorage.setItem('user', JSON.stringify(updatedUser));
     }
-
     return (
-        <AuthContext.Provider value={{ token, user, login, logout, updateUser }}>
+        <AuthContext.Provider value={{ token, user, login, logout, updateUser, updateWords }}>
             {children}
         </AuthContext.Provider>
     )
