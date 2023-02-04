@@ -24,11 +24,6 @@ function Profile() {
         loadUserProfile();
     }, [])
 
-    async function handleUpdate() {
-        const response = await updateUserWords({ "title": "demoWord" }, token, user?.id);
-        if (response.status == "ok") updateWords(response.words)
-    }
-
     return (
         <m.div>
             {!user ? <div>loading ... </div> :
@@ -52,10 +47,10 @@ function Profile() {
                         </section>
 
                         <section className='p-4 shadow-lg rounded-xl'>
-                            <button onClick={handleUpdate}> Add word</button>
+                            {/* <button onClick={handleUpdate}> Add word</button> */}
                             <h1 className='p-4 text-center'>Saved words</h1>
                             <article className=' flex flex-wrap gap-4 justify-evenly'>
-                                {user.words.map(word => <article key={word.title} className='p-4 bg-theme-primary rounded-xl w-20 text-white'> {word.title} </article>)}
+                                {user.words.map(word => <article key={word.word} className='p-4 bg-theme-primary rounded-xl w-20 text-white'> {word.word} </article>)}
                             </article>
 
                         </section>
